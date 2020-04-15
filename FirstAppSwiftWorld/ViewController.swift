@@ -31,31 +31,45 @@ class ViewController: UIViewController {
     }
     
     @IBAction func switchChanged(_ sender: UISwitch) {
-        self.button.isEnabled = sender.isOn
-        self.sliderPercent.isEnabled = sender.isOn
+        button.isEnabled = sender.isOn
+        sliderPercent.isEnabled = sender.isOn
+        sliderTerm.isEnabled = sender.isOn
+        textFieldSumm.isEnabled = sender.isOn
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        self.percentLabel.text = "\(sender.value.rounded()) %"
+        percentLabel.text = "\(sender.value.rounded()) %"
     }
+    
+    func changeAmount() -> String {
+               var amountValue = ""
+               if let summ = Int(textFieldSumm.text!) {
+                    amountValue = "\((Double(summ) * Double(sliderPercent.value/1200) * Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) / (Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) - 1)).rounded()) руб"
+               } else {
+                   self.amountLabel.text = "0 руб"
+               }
+               return amountValue
+           }
     
     @IBAction func termChanged(_ sender: UISlider) {
-        self.termLabel.text = "\(sender.value.rounded())  \(year)"
+        switch Int(sender.value) {
+        case  5...20, 25...30:
+            year = "лет"
+        case 21:
+            year = "год"
+        default:
+            year = "года"
+        }
+        self.termLabel.text = "\(Int(sender.value))" + " \(year)"
+        amountLabel.text = changeAmount()
     }
+
     
     @IBAction func textChangedSumm(_ sender: UITextField) {
-        if let summ = Int(sender.text!){
-   //         self.amountLabel.text = "\((summ * Double(pow(self.sliderPercent.value/100 + 1, sliderTerm.value))).rounded()) руб"
-//            let upSide = summ * Double(sliderPercent.value/1200) * Double(pow(1 + sliderPercent.value/1200, sliderTerm.value * 12))
-//            let downSide = Double(pow(1 + sliderPercent.value/1200, sliderTerm.value * 12)) - 1
-//            let monthTerm = Double(sliderTerm.value*12)
-//            let monthPercent = Double(sliderPercent.value/1200)
-//            self.amountLabel.text = "\((summ * monthPercent * Double(pow(1 + monthPercent, monthTerm)) / (Double(pow(1 + monthPercent, monthTerm)) - 1)).rounded()) руб"
+        if let summ = Int(sender.text!) {
             self.amountLabel.text = "\((Double(summ) * Double(sliderPercent.value/1200) * Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) / (Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) - 1)).rounded()) руб"
-            
-            
         } else {
-            self.amountLabel.text = "0"
+            self.amountLabel.text = "0 руб"
         }
     }
     
@@ -67,8 +81,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         percentLabel.text = "\(sliderPercent.value.rounded()) %"
-        amountLabel.text = "0"
-        termLabel.text = "\(sliderTerm.value.rounded()) \(year)"
+        amountLabel.text = "0 руб"
+        termLabel.text = "\(Int(sliderTerm.value))" + " лет"
         self.button.addTarget(self, action: #selector(tappedButton(_:)), for: .touchUpInside)
    }
 }
