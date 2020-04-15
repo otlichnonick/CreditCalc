@@ -111,6 +111,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsg-yX-EhS">
+                                <rect key="frame" x="64.5" y="137" width="191" height="29"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="Вернуть душу"/>
+                                <connections>
+                                    <action selector="resetMethod:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xUp-Sz-U2X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
@@ -122,6 +131,7 @@
                             <constraint firstItem="Q12-st-Jb5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="7EE-eu-JmQ"/>
                             <constraint firstItem="hPB-ey-X0l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="8jl-Ji-Szk"/>
                             <constraint firstItem="5PZ-xV-yet" firstAttribute="leading" secondItem="4n8-wE-aHZ" secondAttribute="leading" id="9P2-tc-wsj"/>
+                            <constraint firstItem="lsg-yX-EhS" firstAttribute="top" secondItem="Q12-st-Jb5" secondAttribute="bottom" constant="8" symbolic="YES" id="Dvh-Ll-k72"/>
                             <constraint firstItem="AA3-l4-VyP" firstAttribute="top" secondItem="hPB-ey-X0l" secondAttribute="bottom" constant="14" id="G4q-1h-rSH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AA3-l4-VyP" secondAttribute="trailing" symbolic="YES" id="GeU-tU-bJL"/>
                             <constraint firstItem="lnp-fe-jsT" firstAttribute="leading" secondItem="QMi-yP-FVX" secondAttribute="trailing" constant="35" id="Hyj-O4-0Rh"/>
@@ -138,6 +148,7 @@
                             <constraint firstItem="Cfe-6x-2cq" firstAttribute="leading" secondItem="5PZ-xV-yet" secondAttribute="trailing" constant="35" id="YQ8-Fm-iKI"/>
                             <constraint firstItem="4n8-wE-aHZ" firstAttribute="top" secondItem="QMi-yP-FVX" secondAttribute="bottom" constant="15" id="agR-6e-SHY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5PZ-xV-yet" secondAttribute="trailing" constant="240" id="cD5-Q1-pbQ"/>
+                            <constraint firstItem="lsg-yX-EhS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="f6N-6p-eGc"/>
                             <constraint firstItem="5PZ-xV-yet" firstAttribute="top" secondItem="4n8-wE-aHZ" secondAttribute="bottom" constant="15" id="g7e-bH-khG"/>
                             <constraint firstItem="QMi-yP-FVX" firstAttribute="leading" secondItem="WKW-BS-TME" secondAttribute="leading" id="gSJ-ZN-4qr"/>
                             <constraint firstItem="1GR-Bs-tLT" firstAttribute="top" secondItem="Q12-st-Jb5" secondAttribute="bottom" constant="73" id="iIV-Yh-jVE"/>
@@ -156,6 +167,7 @@
                     <connections>
                         <outlet property="amountLabel" destination="AA3-l4-VyP" id="vLO-Ud-vpm"/>
                         <outlet property="button" destination="Q12-st-Jb5" id="Vp2-6y-M8M"/>
+                        <outlet property="cancelOffer" destination="lsg-yX-EhS" id="kqz-ke-e8s"/>
                         <outlet property="percentLabel" destination="QMi-yP-FVX" id="fWT-fe-H3g"/>
                         <outlet property="sliderPercent" destination="lnp-fe-jsT" id="QFv-SK-RYN"/>
                         <outlet property="sliderTerm" destination="f6v-lG-3Ld" id="yX5-OJ-uPA"/>

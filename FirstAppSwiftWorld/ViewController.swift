@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var sliderTerm: UISlider!
     @IBOutlet weak var textFieldSumm: UITextField!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var cancelOffer: UIButton!
+    
     
 
     @IBAction func tappedButton(_ sender: UIButton) {
@@ -30,21 +32,32 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func resetMethod(_ sender: UIButton) {
+        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        percentLabel.text = "0 %"
+        termLabel.text = "0 лет"
+    }
+    
+    
     @IBAction func switchChanged(_ sender: UISwitch) {
         button.isEnabled = sender.isOn
         sliderPercent.isEnabled = sender.isOn
         sliderTerm.isEnabled = sender.isOn
         textFieldSumm.isEnabled = sender.isOn
+        cancelOffer.isEnabled = sender.isOn
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         percentLabel.text = "\(sender.value.rounded()) %"
+        amountLabel.text = changeAmount()
     }
     
     func changeAmount() -> String {
                var amountValue = ""
+        let percentValue = sliderPercent.value.rounded()
+        let termValue = sliderTerm.value.rounded()
                if let summ = Int(textFieldSumm.text!) {
-                    amountValue = "\((Double(summ) * Double(sliderPercent.value/1200) * Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) / (Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) - 1)).rounded()) руб"
+                    amountValue = "\(Int(Double(summ) * Double(percentValue/1200) * Double(pow(1 + Double(percentValue/1200), Double(termValue*12))) / (Double(pow(1 + Double(percentValue/1200), Double(termValue*12))) - 1))) руб"
                } else {
                    self.amountLabel.text = "0 руб"
                }
@@ -67,7 +80,7 @@ class ViewController: UIViewController {
     
     @IBAction func textChangedSumm(_ sender: UITextField) {
         if let summ = Int(sender.text!) {
-            self.amountLabel.text = "\((Double(summ) * Double(sliderPercent.value/1200) * Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) / (Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) - 1)).rounded()) руб"
+            self.amountLabel.text = "\(Int(Double(summ) * Double(sliderPercent.value/1200) * Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) / (Double(pow(1 + Double(sliderPercent.value/1200), Double(sliderTerm.value*12))) - 1))) руб"
         } else {
             self.amountLabel.text = "0 руб"
         }
@@ -79,6 +92,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         super.viewDidLoad()
         percentLabel.text = "\(sliderPercent.value.rounded()) %"
         amountLabel.text = "0 руб"
