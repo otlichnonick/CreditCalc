@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FirstAppSwiftWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CreditCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,9 +90,9 @@
                                 </connections>
                             </slider>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfe-6x-2cq">
-                                <rect key="frame" x="115" y="338.5" width="33" height="34"/>
+                                <rect key="frame" x="115" y="338.5" width="34" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="v0F-6B-0Sc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="v0F-6B-0Sc"/>
                                     <constraint firstAttribute="height" constant="34" id="x2T-ze-e2f"/>
                                 </constraints>
                                 <attributedString key="attributedText"/>
